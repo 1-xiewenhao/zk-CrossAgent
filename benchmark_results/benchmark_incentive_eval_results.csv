@@ -1,3 +1,0 @@
-strategy,totalCalls,effectiveCalls,extraCalls,totalSpend,effectiveSpend,waste,wasteRate,providerRevenue,orchestratorRevenue,rejectAfterClose,rejectMessage
-Honest-Orchestrator,3,3,0,30,30,0,0,24,6,true,Task already closed
-Greedy-Orchestrator,10,3,7,100,30,70,0.7,80,20,true,Insufficient root capability budget
