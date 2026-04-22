@@ -1,0 +1,61 @@
+[dotenv@17.3.1] injecting env (36) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+==================================================
+gateway /invoke benchmark (direct HTTP, self-measured)
+target = http://localhost:3000/invoke
+duration per round = 10s
+payload dir = /root/mcp-l1/benchmark_payloads
+==================================================
+
+
+================ Round: concurrency=10 ================
+Loaded 30000 bodies
+[Round Summary]
+elapsedSec=10.04 totalCompleted=1539 success=1539 errors=0
+TPS=153.32 P50=56.68ms P95=120.27ms P99=155.24ms
+statusCount={}
+
+================ Round: concurrency=50 ================
+Loaded 30000 bodies
+[Round Summary]
+elapsedSec=10.17 totalCompleted=1639 success=1639 errors=0
+TPS=161.19 P50=252.16ms P95=328.62ms P99=3409.92ms
+statusCount={}
+
+================ Round: concurrency=100 ================
+Loaded 30000 bodies
+[Round Summary]
+elapsedSec=10.29 totalCompleted=1664 success=1664 errors=0
+TPS=161.68 P50=599.31ms P95=642.41ms P99=1180.61ms
+statusCount={}
+
+================ Round: concurrency=200 ================
+Loaded 30000 bodies
+[Round Summary]
+elapsedSec=11.02 totalCompleted=1785 success=1785 errors=0
+TPS=161.99 P50=1224.75ms P95=1247.44ms P99=1428.37ms
+statusCount={}
+
+================ Round: concurrency=500 ================
+Loaded 30000 bodies
+[Round Summary]
+elapsedSec=12.35 totalCompleted=1965 success=1965 errors=0
+TPS=159.06 P50=3027.17ms P95=3085.81ms P99=3139.13ms
+statusCount={}
+
+================ Round: concurrency=1000 ================
+Loaded 30000 bodies
+[Round Summary]
+elapsedSec=12.73 totalCompleted=2078 success=2078 errors=0
+TPS=163.19 P50=4228.23ms P95=12077.20ms P99=12580.19ms
+statusCount={}
+
+==================================================
+Final CSV
+Concurrent Agents,Total Requests,Duration(s),TPS,P99 Latency (ms),Errors
+10,1539,10.04,153.32,155.24,0
+50,1639,10.17,161.19,3409.92,0
+100,1664,10.29,161.68,1180.61,0
+200,1785,11.02,161.99,1428.37,0
+500,1965,12.35,159.06,3139.13,0
+1000,2078,12.73,163.19,12580.19,0
+==================================================

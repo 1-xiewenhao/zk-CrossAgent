@@ -1,0 +1,26 @@
+{
+  "generatedAt": "2026-04-02T03:02:46.084Z",
+  "config": {
+    "providerServiceCost": 8,
+    "orchestratorFee": 2,
+    "depositValueEth": "1.0"
+  },
+  "contracts": {
+    "capabilityManager": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+    "escrowReceipt": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"
+  },
+  "gas": {
+    "registerBatchZKP": {
+      "estimateGas": 244116,
+      "gasUsed": 244116
+    },
+    "depositFor": {
+      "estimateGas": 45550,
+      "gasUsed": 45550
+    },
+    "settleReceipt": {
+      "estimateGas": 93291,
+      "gasUsed": 93291
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "taskId": "0x3c9940845868920cd32ff76c431027e828bf6d7256208f853001ae24690760af",
+  "rootCapId": "0xadc2e49688808c5bef48501514f8fbc73ed53794eaad9b6d47f9d84a2ed3f07d",
+  "caller": "0xc707D6540127AEA07643FF5C703fF2BfEF428335",
+  "spentBudget": 100,
+  "usedSubcalls": 10,
+  "finalResultHash": "0x37a47202225a21ebcd8b551d4f90a129b58552c192ced7a2958d4333d4c04021",
+  "completionReasonHash": "0x4a0f32ef8097eceaedce467f567ddd22a1afdb1c887425842fd1da2ef5ca9cbb",
+  "completionReason": "Benchmark task completed",
+  "completionSignature": "0x408a1b3accc5e1ee370d0f96f11b2e0f8f83af7907a0c2ee5682224b6c93cc2f6238b7661371dfeeb5079c72d92e01dce320e68a1db3ea1414a74f0ff22ec9801c",
+  "closedAt": 1776408771052
+}

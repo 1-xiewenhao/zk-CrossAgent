@@ -1,0 +1,12 @@
+{
+  "taskId": "0xfad19698957f1fb0582d7fa8f28b15909910ac15c20630d70c4784f040ab0870",
+  "rootCapId": "0xb7b142ce2f418bd556b47f4a136b22b4b02cac74e7010d53fb2454fc209bd501",
+  "caller": "0xc707D6540127AEA07643FF5C703fF2BfEF428335",
+  "spentBudget": 100,
+  "usedSubcalls": 10,
+  "finalResultHash": "0x91b9e6c7ff320d2b828803e77a20d1f6bd1a1b642d5008d6b1505aa82242d1c7",
+  "completionReasonHash": "0xc81573c8b03b1133a7d10adc2e0a44f4fe1b31d7d4b9e916e5df67aac875ec16",
+  "completionReason": "DeepSeek completed the planned multi-step research task",
+  "completionSignature": "0x73043998e2cf4d9641fd698ae48b6da5780ea4ff0db1eef6d0cc0e288e464d8b223f3abc0dd1ab3bffd4ee592e051922b3751ef376c74125200245b8c84b042e1c",
+  "closedAt": 1775902972888
+}

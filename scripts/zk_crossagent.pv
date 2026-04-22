@@ -1,0 +1,78 @@
+(* ===== Types ===== *)
+type zkc_pkey.
+type zkc_skey.
+type zkc_hash.
+type zkc_sig.
+
+(* ===== Crypto Primitives ===== *)
+fun zkc_pk(zkc_skey): zkc_pkey.
+fun zkc_pack_pr(bitstring, bitstring, bitstring): bitstring.
+fun zkc_pack_nested(zkc_hash, zkc_sig): bitstring.
+fun zkc_hashf(bitstring): zkc_hash.
+fun zkc_sign(zkc_hash, zkc_skey): zkc_sig.
+
+(* zkc_getmsg is defined ONLY by reduction, not by fun *)
+reduc forall m: zkc_hash, k: zkc_skey;
+  zkc_getmsg(zkc_sign(m, k), zkc_pk(k)) = m.
+
+(* ===== Channels ===== *)
+free c: channel.
+free p2b: channel [private].
+free b2e: channel [private].
+
+(* ===== Public metadata ===== *)
+free meta_i: bitstring.
+
+(* ===== Events ===== *)
+event ProviderGenerates(bitstring, zkc_hash).
+event BuyerConfirms(bitstring, zkc_hash).
+event EscrowSettles(bitstring, zkc_hash).
+
+(* ===== Queries ===== *)
+query id: bitstring, x: zkc_hash;
+  inj-event(EscrowSettles(id, x)) ==> inj-event(BuyerConfirms(id, x)).
+
+query id: bitstring, x: zkc_hash;
+  inj-event(BuyerConfirms(id, x)) ==> inj-event(ProviderGenerates(id, x)).
+
+(* ===== Provider ===== *)
+let processProvider(sk_p: zkc_skey) =
+  new callId: bitstring;
+  new resp: bitstring;
+  let msg_p = zkc_hashf(zkc_pack_pr(meta_i, callId, resp)) in
+  event ProviderGenerates(callId, msg_p);
+  let sig_p = zkc_sign(msg_p, sk_p) in
+  out(p2b, (callId, resp, sig_p)).
+
+(* ===== Buyer / Orchestrator ===== *)
+let processBuyer(sk_b: zkc_skey, pk_p: zkc_pkey) =
+  in(p2b, (in_callId: bitstring, in_resp: bitstring, in_sig_p: zkc_sig));
+  let msg_p = zkc_hashf(zkc_pack_pr(meta_i, in_callId, in_resp)) in
+  if zkc_getmsg(in_sig_p, pk_p) = msg_p then
+    event BuyerConfirms(in_callId, msg_p);
+    let msg_c = zkc_hashf(zkc_pack_nested(msg_p, in_sig_p)) in
+    let sig_c = zkc_sign(msg_c, sk_b) in
+    out(b2e, (in_callId, in_resp, in_sig_p, sig_c)).
+
+(* ===== Escrow ===== *)
+let processEscrow(pk_p: zkc_pkey, pk_b: zkc_pkey) =
+  in(b2e, (in_callId: bitstring, in_resp: bitstring, in_sig_p: zkc_sig, in_sig_c: zkc_sig));
+  let msg_p = zkc_hashf(zkc_pack_pr(meta_i, in_callId, in_resp)) in
+  if zkc_getmsg(in_sig_p, pk_p) = msg_p then
+    let msg_c = zkc_hashf(zkc_pack_nested(msg_p, in_sig_p)) in
+    if zkc_getmsg(in_sig_c, pk_b) = msg_c then
+      event EscrowSettles(in_callId, msg_p).
+
+(* ===== Main ===== *)
+process
+  new sk_p: zkc_skey;
+  new sk_b: zkc_skey;
+  let pk_p = zkc_pk(sk_p) in
+  let pk_b = zkc_pk(sk_b) in
+  out(c, pk_p);
+  out(c, pk_b);
+  (
+      processProvider(sk_p)
+    | processBuyer(sk_b, pk_p)
+    | processEscrow(pk_p, pk_b)
+  )

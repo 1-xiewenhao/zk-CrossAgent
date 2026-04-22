@@ -1,0 +1,12 @@
+{
+  "taskId": "0xc37265fb6ae47e890d964225688c71d1baf006cbd3851c779eab9e61ad979566",
+  "rootCapId": "0x6d47e296455d43b955c40c70c5aea19435defea496c20cf038c68413e5ce8b9e",
+  "caller": "0xc707D6540127AEA07643FF5C703fF2BfEF428335",
+  "spentBudget": 30,
+  "usedSubcalls": 3,
+  "finalResultHash": "0xde5ef6e9edd48321daf0729004bfad14ce39249c24001ce218ab4357f1aa37f2",
+  "completionReasonHash": "0x6d8b5db3f0524a6e7563dabe4b8a4030d059ed24971bed5e8e6bb0673182f301",
+  "completionReason": "Honest strategy closes immediately after goal reached",
+  "completionSignature": "0xdda8edd25c4a70623b2b6d4ffea38a02049f72f77c95ae36bf5080d9400ac7f70807783f294161f3929746424a999ddf9c829a432026507bdb737c337c014b761c",
+  "closedAt": 1776084309233
+}

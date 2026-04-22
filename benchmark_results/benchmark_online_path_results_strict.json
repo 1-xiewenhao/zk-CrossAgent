@@ -1,0 +1,153 @@
+{
+  "generatedAt": "2026-04-18T02:24:16.269Z",
+  "config": {
+    "gatewayBaseUrl": "http://localhost:3000",
+    "rounds": 5,
+    "subcallsPerRound": 1,
+    "taskMaxSubcalls": 10,
+    "providerServiceCost": 8,
+    "orchestratorFee": 2,
+    "defaultCapBudget": 100,
+    "excludeFirstRound": true
+  },
+  "definition": {
+    "tExec": "End-to-end invoke latency on the online path",
+    "tConf": "Local hash construction + local ECDSA buyer signature + confirmReceipt request",
+    "tClose": "taskState query + Completion Certificate construction + local signature + completeTask request",
+    "protocolOverhead": "T_conf + T_close",
+    "onlineTotal": "T_exec + T_conf + T_close"
+  },
+  "summary": {
+    "allRounds": {
+      "invoke": {
+        "avg": 2357.9268074035645,
+        "p50": 1908.1670875549316,
+        "p95": 4647.465118408203,
+        "min": 1569.3024215698242,
+        "max": 4647.465118408203
+      },
+      "confirm": {
+        "avg": 26.943452835083008,
+        "p50": 25.421003341674805,
+        "p95": 40.21583938598633,
+        "min": 20.13937759399414,
+        "max": 40.21583938598633
+      },
+      "close": {
+        "avg": 27.905879974365234,
+        "p50": 26.281747817993164,
+        "p95": 38.85873603820801,
+        "min": 21.29157257080078,
+        "max": 38.85873603820801
+      },
+      "protocolOverhead": {
+        "avg": 54.84933280944824,
+        "p50": 51.70275115966797,
+        "p95": 79.07457542419434,
+        "min": 41.43095016479492,
+        "max": 79.07457542419434
+      },
+      "onlineTotal": {
+        "avg": 2412.7761402130127,
+        "p50": 1955.1171436309814,
+        "p95": 4726.5396938323975,
+        "min": 1624.3907527923584,
+        "max": 4726.5396938323975
+      }
+    },
+    "warmOnly": {
+      "invoke": {
+        "avg": 1785.5422296524048,
+        "p50": 1679.8201332092285,
+        "p95": 1984.8792762756348,
+        "min": 1569.3024215698242,
+        "max": 1984.8792762756348
+      },
+      "confirm": {
+        "avg": 23.625356197357178,
+        "p50": 22.38619613647461,
+        "p95": 26.554847717285156,
+        "min": 20.13937759399414,
+        "max": 26.554847717285156
+      },
+      "close": {
+        "avg": 25.16766595840454,
+        "p50": 24.563859939575195,
+        "p95": 28.533483505249023,
+        "min": 21.29157257080078,
+        "max": 28.533483505249023
+      },
+      "protocolOverhead": {
+        "avg": 48.79302215576172,
+        "p50": 46.950056076049805,
+        "p95": 55.08833122253418,
+        "min": 41.43095016479492,
+        "max": 55.08833122253418
+      },
+      "onlineTotal": {
+        "avg": 1834.3352518081665,
+        "p50": 1721.2510833740234,
+        "p95": 2036.5820274353027,
+        "min": 1624.3907527923584,
+        "max": 2036.5820274353027
+      }
+    }
+  },
+  "perRoundStats": [
+    {
+      "round": 1,
+      "usedSubcalls": 1,
+      "spentBudget": 10,
+      "invokeAvg": 4647.465118408203,
+      "confirmAvg": 40.21583938598633,
+      "closeTime": 38.85873603820801,
+      "protocolOverhead": 79.07457542419434,
+      "onlineTotal": 4726.5396938323975,
+      "includedInWarmStats": false
+    },
+    {
+      "round": 2,
+      "usedSubcalls": 1,
+      "spentBudget": 10,
+      "invokeAvg": 1569.3024215698242,
+      "confirmAvg": 26.554847717285156,
+      "closeTime": 28.533483505249023,
+      "protocolOverhead": 55.08833122253418,
+      "onlineTotal": 1624.3907527923584,
+      "includedInWarmStats": true
+    },
+    {
+      "round": 3,
+      "usedSubcalls": 1,
+      "spentBudget": 10,
+      "invokeAvg": 1984.8792762756348,
+      "confirmAvg": 25.421003341674805,
+      "closeTime": 26.281747817993164,
+      "protocolOverhead": 51.70275115966797,
+      "onlineTotal": 2036.5820274353027,
+      "includedInWarmStats": true
+    },
+    {
+      "round": 4,
+      "usedSubcalls": 1,
+      "spentBudget": 10,
+      "invokeAvg": 1908.1670875549316,
+      "confirmAvg": 22.38619613647461,
+      "closeTime": 24.563859939575195,
+      "protocolOverhead": 46.950056076049805,
+      "onlineTotal": 1955.1171436309814,
+      "includedInWarmStats": true
+    },
+    {
+      "round": 5,
+      "usedSubcalls": 1,
+      "spentBudget": 10,
+      "invokeAvg": 1679.8201332092285,
+      "confirmAvg": 20.13937759399414,
+      "closeTime": 21.29157257080078,
+      "protocolOverhead": 41.43095016479492,
+      "onlineTotal": 1721.2510833740234,
+      "includedInWarmStats": true
+    }
+  ]
+}
