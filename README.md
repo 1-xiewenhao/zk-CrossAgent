@@ -1,13 +1,32 @@
-# Sample Hardhat Project
+# zk-CrossAgent
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
+Prototype implementation of **zk-CrossAgent**, a task-bounded cross-chain settlement protocol for autonomous AI agents.
 
-Try running some of the following tasks:
+## Overview
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.js
-```
+zk-CrossAgent is a prototype system for secure cross-domain service procurement by autonomous AI agents.  
+It combines:
+
+- **task-bounded capability delegation**
+- **nested dual-signature receipts**
+- **asynchronous batch ZKP verification**
+- **cross-chain settlement with main-chain escrow**
+
+The prototype is designed to demonstrate that task-level budget control, dual confirmation, and non-blocking online interaction can coexist in a practical agent system.
+
+## Repository Structure
+
+```text
+.
+├── benchmark_payloads/      # Fixed request bodies for gateway load testing
+├── circuits/                # Circom circuits and related proving assets
+├── contracts/               # Solidity smart contracts
+├── ignition/                # Hardhat ignition deployment modules
+├── scripts/                 # Main runtime, deployment, and benchmark scripts
+├── .env.example             # Environment variable template
+├── .gitignore
+├── README.md
+├── deploy.js
+├── hardhat.config.js
+├── package.json
+└── package-lock.json
